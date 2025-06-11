@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura - Estética y Bienestar Integral Japonés</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        
+        .hero-pattern {
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 30c0-11.046-8.954-20-20-20s-20 8.954-20 20c0 11.046 8.954 20 20 20-11.046 0-20 8.954-20 20s8.954 20 20 20c11.046 0 20-8.954 20-20 0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20c11.046 0 20-8.954 20-20s-8.954-20-20-20-20 8.954-20 20z' fill='%23dc2626' fill-opacity='0.05'/%3E%3C/svg%3E");
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .sakura {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ffb3ba 0%, #ff6b6b 100%);
+            border-radius: 0 100% 0 100%;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #dc2626;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-100">
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="text-3xl font-bold text-white">AURA</span>
+                    <i class="fas fa-spa text-red-600 text-2xl"></i>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white">Inicio</a>
+                    <a href="nosotros.html" class="nav-link text-gray-300 hover:text-white">Sobre Nosotros</a>
+                    <a href="tratamientos.html" class="nav-link text-gray-300 hover:text-white">Tratamientos</a>
+                    <a href="contacto.html" class="nav-link text-gray-300 hover:text-white">Contacto</a>
+                </div>
+                <button class="md:hidden text-gray-300">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="sakura" style="left: 10%; animation-duration: 15s; animation-delay: 0s;"></div>
+        <div class="sakura" style="left: 30%; animation-duration: 20s; animation-delay: 5s;"></div>
+        <div class="sakura" style="left: 50%; animation-duration: 18s; animation-delay: 2s;"></div>
+        <div class="sakura" style="left: 70%; animation-duration: 22s; animation-delay: 7s;"></div>
+        <div class="sakura" style="left: 90%; animation-duration: 16s; animation-delay: 4s;"></div>
+        
+        <div class="container mx-auto px-6 text-center fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                <span class="text-white">AURA</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-4">
+                Estética y Bienestar Integral Japonés
+            </p>
+            <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+                Un oasis de tranquilidad donde la tradición japonesa se encuentra con el cuidado personal moderno
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tratamientos.html" class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full transition duration-300 transform hover:scale-105">
+                    Ver Tratamientos
+                </a>
+                <a href="contacto.html" class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-8 py-3 rounded-full transition duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filosofía -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 slide-up">
+                <h2 class="text-4xl font-bold text-white mb-4">Nuestra Filosofía</h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 slide-up">
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-red-600/20 rounded-full flex items-center justify-center mx-auto mb-4 float">
+                        <i class="fas fa-leaf text-3xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Armonía Natural</h3>
+                    <p class="text-gray-400">Productos naturales inspirados en la tradición japonesa para el cuidado integral de tu piel y bienestar</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-red-600/20 rounded-full flex items-center justify-center mx-auto mb-4 float" style="animation-delay: 0.2s;">
+                        <i class="fas fa-hand-holding-heart text-3xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Omotenashi</h3>
+                    <p class="text-gray-400">La hospitalidad japonesa llevada a cada detalle, ofreciendo una atención personalizada y sincera</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-red-600/20 rounded-full flex items-center justify-center mx-auto mb-4 float" style="animation-delay: 0.4s;">
+                        <i class="fas fa-yin-yang text-3xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Equilibrio Interior</h3>
+                    <p class="text-gray-400">Tratamientos que cuidan tu cuerpo mientras nutren tu mente y espíritu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Destacados -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white mb-4">Nuestros Servicios</h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto mb-8"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Descubre nuestros tratamientos exclusivos que combinan técnicas ancestrales japonesas con la tecnología más avanzada</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card bg-gray-900 rounded-lg overflow-hidden border border-gray-800 hover:border-red-600 transition duration-300">
+                    <div class="h-48 bg-gradient-to-b from-red-600/20 to-transparent flex items-center justify-center">
+                        <i class="fas fa-spa text-5xl text-red-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3">Tratamientos Faciales</h3>
+                        <p class="text-gray-400 mb-4">Kobido, limpieza japonesa y rituales de belleza ancestrales para rejuvenecer tu rostro</p>
+                        <a href="tratamientos.html" class="text-red-600 hover:text-red-500 flex items-center">
+                            Saber más <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-gray-900 rounded-lg overflow-hidden border border-gray-800 hover:border-red-600 transition duration-300">
+                    <div class="h-48 bg-gradient-to-b from-red-600/20 to-transparent flex items-center justify-center">
+                        <i class="fas fa-hands text-5xl text-red-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3">Masajes Orientales</h3>
+                        <p class="text-gray-400 mb-4">Lomi Lomi, Balinés, Tibetano y más técnicas para liberar tensiones y renovar energías</p>
+                        <a href="tratamientos.html" class="text-red-600 hover:text-red-500 flex items-center">
+                            Saber más <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-gray-900 rounded-lg overflow-hidden border border-gray-800 hover:border-red-600 transition duration-300">
+                    <div class="h-48 bg-gradient-to-b from-red-600/20 to-transparent flex items-center justify-center">
+                        <i class="fas fa-hot-tub text-5xl text-red-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3">Tratamientos Corporales</h3>
+                        <p class="text-gray-400 mb-4">Envolturas de té verde, exfoliaciones con sales del Himalaya y rituales detox</p>
+                        <a href="tratamientos.html" class="text-red-600 hover:text-red-500 flex items-center">
+                            Saber más <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ubicación -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-6">Encuéntranos en Almería</h2>
+                    <p class="text-gray-400 mb-6">Ubicados en el corazón de la ciudad, nuestro centro es un refugio de paz y tranquilidad donde podrás desconectar del estrés diario.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-red-600 text-xl mr-4"></i>
+                            <span class="text-gray-300">Centro de Almería, Calle Cualquiera 123</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-red-600 text-xl mr-4"></i>
+                            <span class="text-gray-300">888 888 888</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-red-600 text-xl mr-4"></i>
+                            <span class="text-gray-300">aurainfo@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-red-600 text-xl mr-4"></i>
+                            <span class="text-gray-300">Lun - Sáb: 10:00 - 20:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold mb-4">Primera Visita</h3>
+                    <p class="text-gray-400 mb-6">En tu primera visita, te recibiremos con una taza de té japonés y realizaremos una consulta personalizada para entender tus necesidades.</p>
+                    <a href="contacto.html" class="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full transition duration-300">
+                        Reserva tu cita
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="text-2xl font-bold text-white">AURA</span>
+                        <i class="fas fa-spa text-red-600"></i>
+                    </div>
+                    <p class="text-gray-400">Estética y Bienestar Integral Japonés</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-red-600 transition">Inicio</a></li>
+                        <li><a href="nosotros.html" class="text-gray-400 hover:text-red-600 transition">Sobre Nosotros</a></li>
+                        <li><a href="tratamientos.html" class="text-gray-400 hover:text-red-600 transition">Tratamientos</a></li>
+                        <li><a href="contacto.html" class="text-gray-400 hover:text-red-600 transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i>888 888 888</li>
+                        <li><i class="fas fa-envelope mr-2"></i>aurainfo@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Centro de Almería</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-500">&copy; 2024 Aura - Estética y Bienestar Integral Japonés. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
