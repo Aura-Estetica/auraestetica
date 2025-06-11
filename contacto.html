@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Aura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #dc2626;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .form-input {
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: #dc2626;
+            outline: none;
+        }
+        
+        .contact-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+        <link rel="icon" type="image/png" href="logo.png">
+
+</head>
+<body class="bg-black text-gray-100">
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="text-3xl font-bold text-white">AURA</span>
+                    <i class="fas fa-spa text-red-600 text-2xl"></i>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white">Inicio</a>
+                    <a href="nosotros.html" class="nav-link text-gray-300 hover:text-white">Sobre Nosotros</a>
+                    <a href="tratamientos.html" class="nav-link text-gray-300 hover:text-white">Tratamientos</a>
+                    <a href="contacto.html" class="nav-link text-gray-300 hover:text-white">Contacto</a>
+                </div>
+                <button onclick="toggleMenu()" class="md:hidden text-gray-300">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Menú móvil -->
+        <div id="mobileMenu" class="md:hidden hidden bg-black/90 backdrop-blur-sm border-t border-gray-800">
+            <div class="px-6 pt-4 pb-6 space-y-4">
+                <a href="index.html" class="block nav-link text-gray-300 hover:text-white">Inicio</a>
+                <a href="nosotros.html" class="block nav-link text-gray-300 hover:text-white">Sobre Nosotros</a>
+                <a href="tratamientos.html" class="block nav-link text-gray-300 hover:text-white">Tratamientos</a>
+                <a href="contacto.html" class="block nav-link text-gray-300 hover:text-white">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-6 text-center fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Contacta con Nosotros</h1>
+            <p class="text-xl text-gray-400">Estamos aquí para cuidar de ti</p>
+        </div>
+    </section>
+
+    <!-- Información de Contacto -->
+    <section class="py-12 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-6 mb-12">
+                <div class="contact-card bg-gray-900 rounded-lg p-6 text-center border border-gray-800">
+                    <div class="w-16 h-16 bg-red-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Dirección</h3>
+                    <p class="text-gray-400 text-sm">Centro de Almería<br>Calle Cualquiera 123<br>04001 Almería</p>
+                </div>
+                <div class="contact-card bg-gray-900 rounded-lg p-6 text-center border border-gray-800">
+                    <div class="w-16 h-16 bg-red-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Teléfono</h3>
+                    <p class="text-gray-400 text-sm">888 888 888<br>WhatsApp disponible</p>
+                </div>
+                <div class="contact-card bg-gray-900 rounded-lg p-6 text-center border border-gray-800">
+                    <div class="w-16 h-16 bg-red-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Email</h3>
+                    <p class="text-gray-400 text-sm">aurainfo@gmail.com<br>Respuesta en 24h</p>
+                </div>
+                <div class="contact-card bg-gray-900 rounded-lg p-6 text-center border border-gray-800">
+                    <div class="w-16 h-16 bg-red-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Horario</h3>
+                    <p class="text-gray-400 text-sm">Lun - Vie: 10:00 - 20:00<br>Sábado: 10:00 - 18:00<br>Domingo: Cerrado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario y Mapa -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Formulario -->
+                <div class="slide-up">
+                    <h2 class="text-3xl font-bold text-white mb-6">Envíanos un Mensaje</h2>
+                    <p class="text-gray-400 mb-8">¿Tienes alguna pregunta o quieres reservar una cita? Completa el formulario y te responderemos lo antes posible.</p>
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="nombre" class="block text-sm font-medium text-gray-300 mb-2">Nombre *</label>
+                                <input type="text" id="nombre" name="nombre" required 
+                                    class="form-input w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500"
+                                    placeholder="Tu nombre">
+                            </div>
+                            <div>
+                                <label for="apellido" class="block text-sm font-medium text-gray-300 mb-2">Apellido *</label>
+                                <input type="text" id="apellido" name="apellido" required 
+                                    class="form-input w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500"
+                                    placeholder="Tu apellido">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Correo Electrónico *</label>
+                            <input type="email" id="email" name="email" required 
+                                class="form-input w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500"
+                                placeholder="tu@email.com">
+                        </div>
+                        <div>
+                            <label for="telefono" class="block text-sm font-medium text-gray-300 mb-2">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" 
+                                class="form-input w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500"
+                                placeholder="888 888 888">
+                        </div>
+                        <div>
+                            <label for="servicio" class="block text-sm font-medium text-gray-300 mb-2">Servicio de Interés</label>
+                            <select id="servicio" name="servicio" 
+                                class="form-input w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white">
+                                <option value="">Selecciona un servicio</option>
+                                <option value="facial">Tratamientos Faciales</option>
+                                <option value="masaje">Masajes Orientales</option>
+                                <option value="corporal">Tratamientos Corporales</option>
+                                <option value="pack">Packs Especiales</option>
+                                <option value="otro">Otro / Consulta General</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="mensaje" class="block text-sm font-medium text-gray-300 mb-2">Mensaje *</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" required 
+                                class="form-input w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 resize-none"
+                                placeholder="Cuéntanos cómo podemos ayudarte..."></textarea>
+                        </div>
+                        <div class="flex items-start">
+                            <input type="checkbox" id="privacidad" name="privacidad" required 
+                                class="mt-1 mr-3 text-red-600 bg-black border-gray-700 rounded focus:ring-red-600">
+                            <label for="privacidad" class="text-sm text-gray-400">
+                                Acepto la política de privacidad y autorizo el tratamiento de mis datos personales *
+                            </label>
+                        </div>
+                        <button type="submit" 
+                            class="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full transition duration-300 transform hover:scale-105">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                    <div id="formMessage" class="mt-4 p-4 rounded-lg hidden"></div>
+                </div>
+                <!-- Mapa / Información adicional -->
+                <div class="bg-black rounded-lg p-8 border border-gray-800">
+                    <h3 class="text-2xl font-semibold mb-6">Visítanos en Almería</h3>
+                    <!-- Simulación de mapa -->
+                    <div class="bg-gray-900 rounded-lg h-64 mb-6 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-map-marked-alt text-4xl text-red-600 mb-4"></i>
+                            <p class="text-gray-400">Centro de Almería</p>
+                            <p class="text-gray-500 text-sm">Fácil acceso y parking cercano</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-semibold mb-3">Tu Primera Visita</h4>
+                        <p class="text-gray-400 text-sm">
+                            En tu primera visita a Aura, te recibiremos con una taza de té japonés y realizaremos una consulta personalizada para conocer tus necesidades y preferencias.
+                        </p>
+                        <h4 class="font-semibold mb-3 mt-6">Cómo Llegar</h4>
+                        <ul class="space-y-2 text-gray-400 text-sm">
+                            <li><i class="fas fa-bus mr-2 text-red-600"></i>Autobús: Líneas 1, 3, 7</li>
+                            <li><i class="fas fa-car mr-2 text-red-600"></i>Parking: Disponible en calles cercanas</li>
+                            <li><i class="fas fa-walking mr-2 text-red-600"></i>A 5 min caminando desde el centro</li>
+                        </ul>
+                        <div class="mt-6 p-4 bg-gray-900 rounded-lg">
+                            <p class="text-sm text-gray-400">
+                                <i class="fas fa-info-circle text-red-600 mr-2"></i>
+                                Para urgencias o cancelaciones de última hora, por favor llámanos directamente al 888 888 888
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="text-2xl font-bold text-white">AURA</span>
+                        <i class="fas fa-spa text-red-600"></i>
+                    </div>
+                    <p class="text-gray-400">Estética y Bienestar Integral Japonés</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-red-600 transition">Inicio</a></li>
+                        <li><a href="nosotros.html" class="text-gray-400 hover:text-red-600 transition">Sobre Nosotros</a></li>
+                        <li><a href="tratamientos.html" class="text-gray-400 hover:text-red-600 transition">Tratamientos</a></li>
+                        <li><a href="contacto.html" class="text-gray-400 hover:text-red-600 transition">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i>888 888 888</li>
+                        <li><i class="fas fa-envelope mr-2"></i>aurainfo@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Centro de Almería</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-red-600 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-red-600 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-red-600 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-red-600 transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8 text-gray-500 text-sm">&copy; 2025 Aura. Todos los derechos reservados.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

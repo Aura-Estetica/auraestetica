@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tratamientos - Aura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #dc2626;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .treatment-card {
+            transition: all 0.3s ease;
+        }
+        
+        .treatment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2);
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            background-color: #dc2626;
+            color: white;
+        }
+    </style>
+        <link rel="icon" type="image/png" href="logo.png">
+
+</head>
+<body class="bg-black text-gray-100">
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="text-3xl font-bold text-white">AURA</span>
+                    <i class="fas fa-spa text-red-600 text-2xl"></i>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white">Inicio</a>
+                    <a href="nosotros.html" class="nav-link text-gray-300 hover:text-white">Sobre Nosotros</a>
+                    <a href="tratamientos.html" class="nav-link text-gray-300 hover:text-white">Tratamientos</a>
+                    <a href="contacto.html" class="nav-link text-gray-300 hover:text-white">Contacto</a>
+                </div>
+                <button onclick="toggleMenu()" class="md:hidden text-gray-300">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-6 text-center fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Nuestros Tratamientos</h1>
+            <p class="text-xl text-gray-400">Experiencias únicas inspiradas en la tradición japonesa</p>
+        </div>
+    </section>
+
+    <!-- Tabs -->
+    <section class="py-12 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="showCategory('todos')" class="tab-button active px-6 py-3 rounded-full border border-gray-700 hover:border-red-600 transition">
+                    Todos
+                </button>
+                <button onclick="showCategory('faciales')" class="tab-button px-6 py-3 rounded-full border border-gray-700 hover:border-red-600 transition">
+                    Tratamientos Faciales
+                </button>
+                <button onclick="showCategory('masajes')" class="tab-button px-6 py-3 rounded-full border border-gray-700 hover:border-red-600 transition">
+                    Masajes Orientales
+                </button>
+                <button onclick="showCategory('corporales')" class="tab-button px-6 py-3 rounded-full border border-gray-700 hover:border-red-600 transition">
+                    Tratamientos Corporales
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tratamientos -->
+    <section class="py-12 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tratamientos Faciales -->
+                <div class="treatment-card category-item faciales bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-semibold">Limpieza Facial Japonesa</h3>
+                            <i class="fas fa-spa text-red-600 text-xl"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Limpieza profunda con productos naturales, aceite de arroz y mascarillas calmantes que dejan tu piel radiante.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500"><i class="far fa-clock mr-2"></i>60 min</span>
+                            <span class="text-red-600 font-semibold">65€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-card category-item faciales bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-semibold">Kobido</h3>
+                            <i class="fas fa-spa text-red-600 text-xl"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">El lifting facial japonés que tonifica y rejuvenece tu rostro mediante técnicas ancestrales de masaje.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500"><i class="far fa-clock mr-2"></i>60 min</span>
+                            <span class="text-red-600 font-semibold">85€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Masajes Orientales -->
+                <div class="treatment-card category-item masajes bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-semibold">Lomi Lomi</h3>
+                            <i class="fas fa-hands text-red-600 text-xl"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Movimientos fluidos como olas del mar que liberan tensiones profundas y armonizan cuerpo y mente.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500"><i class="far fa-clock mr-2"></i>75 min</span>
+                            <span class="text-red-600 font-semibold">90€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-card category-item masajes bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-semibold">Masaje Balinés</h3>
+                            <i class="fas fa-hands text-red-600 text-xl"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Combinación perfecta de presión profunda y aceites aromáticos para aliviar el estrés y la fatiga.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500"><i class="far fa-clock mr-2"></i>60 min</span>
+                            <span class="text-red-600 font-semibold">75€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-card category-item masajes bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-semibold">Masaje Tibetano</h3>
+                            <i class="fas fa-hands text-red-600 text-xl"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Trabajo energético con puntos de presión y cuencos tibetanos para restaurar el equilibrio vital.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500"><i class="far fa-clock mr-2"></i>70 min</span>
+                            <span class="text-red-600 font-semibold">80€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-card category-item masajes bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-semibold">Masaje Vietnamita</h3>
+                            <i class="fas fa-hands text-red-600 text-xl"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Técnica que trabaja cara y cuerpo, ideal para dolores de cabeza y tensión cervical.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500"><i class="far fa-clock mr-2"></i>60 min</span>
+                            <span class="text-red-600 font-semibold">70€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-card category-item masajes bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-semibold">Masaje en Pareja</h3>
+                            <i class="fas fa-heart text-red-600 text-xl"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Experiencia compartida en nuestra cabina doble con té de bienvenida y ambiente romántico.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500"><i class="far fa-clock mr-2"></i>90 min</span>
+                            <span class="text-red-600 font-semibold">180€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tratamientos Corporales -->
+                <div class="treatment-card category-item corporales bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-semibold">Exfoliación Himalaya</h3>
+                            <i class="fas fa-hot-tub text-red-600 text-xl"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Sales del Himalaya y aceites naturales que renuevan tu piel dejándola suave y luminosa.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500"><i class="far fa-clock mr-2"></i>45 min</span>
+                            <span class="text-red-600 font-semibold">55€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-card category-item corporales bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-semibold">Envoltura de Té Verde</h3>
+                            <i class="fas fa-hot-tub text-red-600 text-xl"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Tratamiento detox antioxidante que purifica y revitaliza todo tu cuerpo.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500"><i class="far fa-clock mr-2"></i>60 min</span>
+                            <span class="text-red-600 font-semibold">70€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-card category-item corporales bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-semibold">Envoltura de Algas</h3>
+                            <i class="fas fa-hot-tub text-red-600 text-xl"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Hidratación profunda que tonifica y ayuda a drenar líquidos de forma natural.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500"><i class="far fa-clock mr-2"></i>60 min</span>
+                            <span class="text-red-600 font-semibold">75€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-card category-item corporales bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-semibold">Ritual de Arroz</h3>
+                            <i class="fas fa-hot-tub text-red-600 text-xl"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Envoltura calmante que nutre y mejora la textura de la piel con propiedades del arroz japonés.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500"><i class="far fa-clock mr-2"></i>60 min</span>
+                            <span class="text-red-600 font-semibold">70€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packs Especiales -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4">Packs Especiales</h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto mb-8"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Combina varios tratamientos para una experiencia completa de bienestar</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black rounded-lg p-8 border border-gray-800 text-center">
+                    <i class="fas fa-gift text-4xl text-red-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Pack Regalo</h3>
+                    <p class="text-gray-400 mb-6">El regalo perfecto para esa persona especial. Incluye masaje relajante y limpieza facial.</p>
+                    <p class="text-3xl font-bold text-red-600 mb-2">120€</p>
+                    <p class="text-gray-500 text-sm">Ahorro de 20€</p>
+                </div>
+                
+                <div class="bg-black rounded-lg p-8 border border-gray-800 text-center">
+                    <i class="fas fa-crown text-4xl text-red-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Experiencia Zen</h3>
+                    <p class="text-gray-400 mb-6">Masaje tibetano, envoltura de té verde y ritual facial japonés para un día completo de relax.</p>
+                    <p class="text-3xl font-bold text-red-600 mb-2">200€</p>
+                    <p class="text-gray-500 text-sm">Ahorro de 35€</p>
+                </div>
+                
+                <div class="bg-black rounded-lg p-8 border border-gray-800 text-center">
+                    <i class="fas fa-star text-4xl text-red-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Bono Mensual</h3>
+                    <p class="text-gray-400 mb-6">4 sesiones al mes de cualquier masaje de 60 minutos. La mejor forma de cuidarte regularmente.</p>
+                    <p class="text-3xl font-bold text-red-600 mb-2">260€</p>
+                    <p class="text-gray-500 text-sm">Ahorro de 40€</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">¿Lista para tu experiencia Aura?</h2>
+            <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+                Reserva tu cita y descubre el equilibrio perfecto entre tradición japonesa y bienestar moderno
+            </p>
+            <a href="contacto.html" class="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full transition duration-300 transform hover:scale-105">
+                Reservar Ahora
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="text-2xl font-bold text-white">AURA</span>
+                        <i class="fas fa-spa text-red-600"></i>
+                    </div>
+                    <p class="text-gray-400">Estética y Bienestar Integral Japonés</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-red-600 transition">Inicio</a></li>
+                        <li><a href="nosotros.html" class="text-gray-400 hover:text-red-600 transition">Sobre Nosotros</a></li>
+                        <li><a href="tratamientos.html" class="text-gray-400 hover:text-red-600 transition">Tratamientos</a></li>
+                        <li><a href="contacto.html" class="text-gray-400 hover:text-red-600 transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i>888 888 888</li>
+                        <li><i class="fas fa-envelope mr-2"></i>aurainfo@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Centro de Almería</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-500">&copy; 2024 Aura - Estética y Bienestar Integral Japonés. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/90" onclick="toggleMenu()"></div>
+        <div class="absolute right-0 top-0 h-full w-80 bg-gray-900 p-6">
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl font-bold text-white">AURA</span>
+                    <i class="fas fa-spa text-red-600"></i>
+                </div>
+                <button onclick="toggleMenu()" class="text-gray-300">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="index.html" class="block text-gray-300 hover:text-white text-lg py-2">Inicio</a>
+                <a href="nosotros.html" class="block text-gray-300 hover:text-white text-lg py-2">Sobre Nosotros</a>
+                <a href="tratamientos.html" class="block text-gray-300 hover:text-white text-lg py-2">Tratamientos</a>
+                <a href="contacto.html" class="block text-gray-300 hover:text-white text-lg py-2">Contacto</a>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showCategory(category) {
+            // Actualizar botones activos
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Mostrar/ocultar tarjetas
+            const cards = document.querySelectorAll('.category-item');
+            cards.forEach(card => {
+                if (category === 'todos' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
